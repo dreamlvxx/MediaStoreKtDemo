@@ -40,7 +40,6 @@ class MainActivity : AppCompatActivity() {
             for (s in FileUtils.internalPersistentStorageList(this)){
                 Log.e("xxx", "onCreate: " + s)
             }
-
         }
     }
 }

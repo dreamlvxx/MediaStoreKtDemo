@@ -1,6 +1,7 @@
 package com.dream.mediastorektdemo
 
 import android.content.Context
+import android.os.Environment
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.getExternalFilesDirs
 import java.io.File
@@ -53,6 +54,50 @@ class FileUtils {
         fun internalPersistentStorageList(context : Context) : Array<String>{
             return context.fileList()
         }
+
+
+        //**********************************************************************************************
+
+        /**
+         * 内部存储创建临时文件
+         */
+        fun internalTempStorageForCreate(filename : String, context: Context){
+            File.createTempFile(filename,null,context.cacheDir)
+        }
+
+        /**
+         * 根据filename获取一个file
+         */
+        fun internalTempStorageForAccess(filename : String,context: Context) : File{
+            return File(context.cacheDir,filename)
+        }
+
+        /**
+         * 根据filename删除一个file
+         */
+        fun interenalTempStorageForDel(filename : String, context: Context){
+            context.deleteFile(filename)
+        }
+
+
+        //***************************************************************************************************
+
+        /**
+         * 检查外部存储是否可 读 写
+         */
+        fun isExternalStorageWritable(): Boolean {
+            return Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED
+        }
+
+        /**
+         * 检查外部存储是否可 读
+         */
+        fun isExternalStorageReadable(): Boolean {
+            return Environment.getExternalStorageState() in
+                    setOf(Environment.MEDIA_MOUNTED, Environment.MEDIA_MOUNTED_READ_ONLY)
+        }
+
+
 
 
     }
