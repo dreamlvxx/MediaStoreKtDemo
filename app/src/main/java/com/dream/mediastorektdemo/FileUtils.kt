@@ -207,18 +207,28 @@ class FileUtils {
          * MediaStore.Files.Media.getContentUri()  ==>content://media//file
          *
          */
-        @RequiresApi(Build.VERSION_CODES.Q)
         fun mediaStorageForAccess(
             mediaTypeUri: Uri,
-            projection: Array<String>,
-            selection: String,
-            selectionArgs: Array<String>,
-            sortOrder: String,
+            projection: Array<String>?,
+            selection: String?,
+            selectionArgs: Array<String>?,
+            sortOrder: String?,
             context: Context
         ): Cursor? {
             val resolver = context.contentResolver
-            MediaStore.Downloads.getContentUri(VOLUME_EXTERNAL_PRIMARY)
             return resolver.query(mediaTypeUri, projection, selection, selectionArgs, sortOrder)
+        }
+
+        /**
+         * 添加一个文件到媒体库
+         */
+        fun addMediaFile(values: ContentValues, mediaStorageUri: Uri, context: Context): Uri? {
+            val resolver = context.contentResolver
+            return resolver.insert(mediaStorageUri, values)
+        }
+
+        fun updateMediaFile(values : ContentValues){
+
         }
 
         /**

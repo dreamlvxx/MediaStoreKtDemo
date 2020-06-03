@@ -75,4 +75,31 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_access_external_file" />
 
+    <TextView
+        android:id="@+id/tv_add_file_media"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="添加文件到媒体库\n"
+        android:textSize="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_access_external_content" />
+
+    <TextView
+        android:id="@+id/tv_write_to_file"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="向文件写东西\n"
+        android:textSize="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_add_file_media" />
+
+    <TextView
+        android:textSize="20dp"
+        android:id="@+id/tv_access_media_audio_names"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="获取媒体库音乐资源名称\n"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_write_to_file" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
