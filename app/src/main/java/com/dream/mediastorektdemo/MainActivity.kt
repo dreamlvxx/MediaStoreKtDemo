@@ -2,6 +2,7 @@ package com.dream.mediastorektdemo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Environment
 import android.util.Log
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -41,5 +42,30 @@ class MainActivity : AppCompatActivity() {
                 Log.e("xxx", "onCreate: " + s)
             }
         }
+
+        tv_access_external_file.setOnClickListener {
+            val file = FileUtils.externalPersistentStorageForAccess("externalfile1", Environment.DIRECTORY_DCIM,this)
+            val output = file.outputStream()
+            output.use {
+                it.write("this is the content for external file1".toByteArray())
+            }
+        }
+
+        tv_access_external_content.setOnClickListener {
+            val file = FileUtils.externalPersistentStorageForAccess("externalfile1", Environment.DIRECTORY_DCIM,this)
+            val inputStream = file.inputStream()
+            inputStream.bufferedReader().useLines { lines ->
+                lines.fold("") { some, text ->
+                    tv_content.text = "$some\n$text"
+                    "22"
+                }
+            }
+        }
+
+
+
+
+
+
     }
 }
