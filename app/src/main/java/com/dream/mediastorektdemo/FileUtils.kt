@@ -123,19 +123,14 @@ class FileUtils {
          *        {@link android.os.Environment#DIRECTORY_DOCUMENTS}.
          *        {@link android.os.Environment#DIRECTORY_SCREENSHOTS}.
          *        {@link android.os.Environment#DIRECTORY_AUDIOBOOKS}.
-         *         null  如果传这个，就可以存储在根目录下
          *
          *
          *  可以获取到一个filename的文件
          *  如果没有会自动创建
          *
          */
-        fun externalPersistentStorageForAccess(
-            filename: String,
-            type: String,
-            context: Context
-        ): File {
-            return File(context.getExternalFilesDir(type), filename)
+        fun externalPersistentStorageForAccess(filename : String, type : String, context: Context) : File{
+            return File(context.getExternalFilesDir(type),filename)
         }
 
 
@@ -143,9 +138,11 @@ class FileUtils {
          * 获取一个external缓存file
          * 没有会自动创建
          */
-        fun externalCacheStorageForAccess(filename: String, type: String, context: Context): File {
-            return File(context.externalCacheDir, filename)
+        fun externalCacheStorageForAccess(filename: String,type: String,context: Context) : File{
+            return File(context.externalCacheDir,filename)
         }
+
+
 
 //        fun getM(context: Context, filename: String) {
 //            // App needs 10 MB within internal storage.
