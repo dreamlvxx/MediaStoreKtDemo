@@ -38,12 +38,14 @@
 
     <TextView
         android:id="@+id/tv_content"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="这里是内容"
         android:textColor="#000"
-        app:layout_constraintLeft_toRightOf="@id/tv_read_internal_content"
-        app:layout_constraintTop_toTopOf="@id/tv_read_internal_content" />
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <TextView
         android:id="@+id/tv_file_list"
@@ -53,5 +55,24 @@
         android:textSize="20dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_access_file" />
+
+
+    <TextView
+        android:id="@+id/tv_access_external_file"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Access_external_file\n"
+        android:textSize="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_file_list" />
+
+    <TextView
+        android:id="@+id/tv_access_external_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Access content for external file1\n"
+        android:textSize="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_access_external_file" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

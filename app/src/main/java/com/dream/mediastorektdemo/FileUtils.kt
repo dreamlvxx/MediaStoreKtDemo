@@ -12,15 +12,6 @@ class FileUtils {
 
 
     /**
-     * type 可选项目如下
-     *            {@link android.os.Environment#DIRECTORY_MUSIC},
-     *            {@link android.os.Environment#DIRECTORY_PODCASTS},
-     *            {@link android.os.Environment#DIRECTORY_RINGTONES},
-     *            {@link android.os.Environment#DIRECTORY_ALARMS},
-     *            {@link android.os.Environment#DIRECTORY_NOTIFICATIONS},
-     *            {@link android.os.Environment#DIRECTORY_PICTURES},
-     *            {@link android.os.Environment#DIRECTORY_MOVIES}.
-     *
      *  这个文件存储应用私有文件，其他app无法访问，具有很高的安全性。
      *  注意：这个地方不能存储太大的东西。
      *  如果想让别的应用获取这个地方的文件，得用FileProvider
@@ -98,6 +89,48 @@ class FileUtils {
         }
 
 
+        /**
+         * 选择一个主要得外部存储卷 (一般默认第一个是主要的)
+         */
+        fun externalStoragePhysicalLocaltion(context: Context) : File{
+            val externalStorageVolumes: Array<out File> =
+                ContextCompat.getExternalFilesDirs(context, null)
+           return externalStorageVolumes[0]
+        }
+
+
+        /**
+         *type 可选项目如下
+         *        {@link android.os.Environment#DIRECTORY_MUSIC},
+         *        {@link android.os.Environment#DIRECTORY_PODCASTS},
+         *        {@link android.os.Environment#DIRECTORY_RINGTONES},
+         *        {@link android.os.Environment#DIRECTORY_ALARMS},
+         *        {@link android.os.Environment#DIRECTORY_NOTIFICATIONS},
+         *        {@link android.os.Environment#DIRECTORY_PICTURES},
+         *        {@link android.os.Environment#DIRECTORY_MOVIES}.
+         *        {@link android.os.Environment#DIRECTORY_DOWNLOADS}.
+         *        {@link android.os.Environment#DIRECTORY_DCIM}.
+         *        {@link android.os.Environment#DIRECTORY_DOCUMENTS}.
+         *        {@link android.os.Environment#DIRECTORY_SCREENSHOTS}.
+         *        {@link android.os.Environment#DIRECTORY_AUDIOBOOKS}.
+         *
+         *
+         *  可以获取到一个filename的文件
+         *  如果没有会自动创建
+         *
+         */
+        fun externalPersistentStorageForAccess(filename : String, type : String, context: Context) : File{
+            return File(context.getExternalFilesDir(type),filename)
+        }
+
+
+        /**
+         * 获取一个external缓存file
+         * 没有会自动创建
+         */
+        fun externalCacheStorageForAccess(filename: String,type: String,context: Context) : File{
+            return File(context.externalCacheDir,filename)
+        }
 
 
     }
