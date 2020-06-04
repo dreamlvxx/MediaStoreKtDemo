@@ -94,12 +94,21 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_add_file_media" />
 
     <TextView
-        android:textSize="20dp"
         android:id="@+id/tv_access_media_audio_names"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="获取媒体库音乐资源名称\n"
+        android:textSize="20dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_write_to_file" />
+
+    <TextView
+        android:id="@+id/tv_pick_file"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="选择文件\n"
+        android:textSize="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_access_media_audio_names" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,8 +1,10 @@
 package com.dream.mediastorektdemo
 
 import android.Manifest
+import android.app.Activity
 import android.content.ContentUris
 import android.content.ContentValues
+import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -117,6 +119,34 @@ class MainActivity : AppCompatActivity() {
                         val id =
                             it.getLong(cursor.getColumnIndexOrThrow(MediaStore.MediaColumns._ID))
                         Log.e("xxx", "id is $id ")
+                    }
+                }
+            }
+        }
+
+        tv_pick_file.setOnClickListener {
+            pickFile()
+        }
+    }
+
+    val PICK_FILE = 1
+
+    private fun pickFile() {
+        val intent = Intent(Intent.ACTION_OPEN_DOCUMENT)
+        intent.addCategory(Intent.CATEGORY_OPENABLE)
+        intent.type = "*/*"
+        startActivityForResult(intent, PICK_FILE)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        when (requestCode) {
+            PICK_FILE -> {
+                if (resultCode == Activity.RESULT_OK && data != null) {
+                    val uri = data.data
+                    if (uri != null) {
+                        val inputStream = contentResolver.openInputStream(uri)
+                        // 执行文件读取操作
                     }
                 }
             }
